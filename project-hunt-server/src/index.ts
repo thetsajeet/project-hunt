@@ -1,6 +1,11 @@
 import { Hono } from "hono";
+import { logger } from "hono/logger";
+import projectsApi from "./api/projects";
+import usersApi from "./api/users";
 
 const app = new Hono();
+
+app.use(logger());
 
 app.get("/", (c) => {
   return c.json(
@@ -10,5 +15,12 @@ app.get("/", (c) => {
     200,
   );
 });
+
+const api = new Hono().basePath("/api");
+
+api.route("/projects", projectsApi);
+api.route("/users", usersApi);
+
+app.route("/", api);
 
 export default app;
