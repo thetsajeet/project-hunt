@@ -23,4 +23,17 @@ api.route("/users", usersApi);
 
 app.route("/", api);
 
+app.all("*", (c) => {
+  return c.json(
+    {
+      message: "route not found",
+      log: {
+        method: c.req.method,
+        url: c.req.path,
+      },
+    },
+    404,
+  );
+});
+
 export default app;
