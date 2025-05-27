@@ -3,8 +3,10 @@ import { HTTPException } from "hono/http-exception";
 import { db } from "../db";
 import { user as UserTable } from "../db/schema";
 import { eq } from "drizzle-orm";
+import { auth } from "../lib/auth";
+import { HonoRouterVariables } from "../../global";
 
-const usersApi = new Hono();
+const usersApi = new Hono<{ Variables: HonoRouterVariables }>();
 
 usersApi
   .get("/", async (c) => {
@@ -49,7 +51,16 @@ usersApi
       200,
     );
   })
-  .put("/:id", async (c) => {})
-  .delete("/:id", async (c) => {});
+  .put("/:id", async (c) => {
+    const session = c.get("session");
+    const user = c.get("user");
+
+    if (!session || !user)
+      throw new HTTPException(400, { message: "Invalid user session" });
+    // TODO: Update db
+  })
+  .delete("/:id", async (c) => {
+    // TODO: Update db
+  });
 
 export default usersApi;
