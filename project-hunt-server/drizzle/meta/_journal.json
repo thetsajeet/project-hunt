@@ -15,6 +15,27 @@
       "when": 1748312708236,
       "tag": "0001_aspiring_silverclaw",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1748351472352,
+      "tag": "0002_daily_patriot",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1748352372830,
+      "tag": "0003_modern_inhumans",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1748352402435,
+      "tag": "0004_needy_phalanx",
+      "breakpoints": true
     }
   ]
 }

@@ -5,6 +5,7 @@ import {
   text,
   timestamp,
   boolean,
+  primaryKey,
 } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
@@ -65,4 +66,23 @@ export const verification = pgTable("verification", {
   updatedAt: timestamp("updated_at").$defaultFn(
     () => /* @__PURE__ */ new Date(),
   ),
+});
+
+export const project = pgTable("project", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description"),
+  createdAt: timestamp("created_at").notNull(),
+  updatedAt: timestamp("updated_at").notNull(),
+});
+
+export const projectMembers = pgTable("project_members", {
+  user_id: text("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  project_id: text("project_id")
+    .notNull()
+    .references(() => project.id, { onDelete: "cascade" }),
+  role: text("role").default("member"),
+  joinedAt: timestamp("joined_at").defaultNow(),
 });

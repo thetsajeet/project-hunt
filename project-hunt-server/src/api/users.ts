@@ -3,7 +3,6 @@ import { HTTPException } from "hono/http-exception";
 import { db } from "../db";
 import { user as UserTable } from "../db/schema";
 import { eq } from "drizzle-orm";
-import { auth } from "../lib/auth";
 import { HonoRouterVariables } from "../../global";
 
 const usersApi = new Hono<{ Variables: HonoRouterVariables }>();
@@ -33,34 +32,30 @@ usersApi
     if (!userId)
       throw new HTTPException(400, { message: `Invalid user id: ${userId}` });
 
-    const user = await db
+    const userData = await db
       .select({
         email: UserTable.email,
         id: UserTable.id,
         username: UserTable.username,
       })
       .from(UserTable)
-      .where(eq(UserTable.id, userId));
+      .where(eq(UserTable.id, userId))
+      .limit(1);
+
+    if (userData.length == 0)
+      throw new HTTPException(404, {
+        message: "user not found",
+      });
+
     return c.json(
       {
         message: `ok`,
         data: {
-          user,
+          user: userData[0],
         },
       },
       200,
     );
-  })
-  .put("/:id", async (c) => {
-    const session = c.get("session");
-    const user = c.get("user");
-
-    if (!session || !user)
-      throw new HTTPException(400, { message: "Invalid user session" });
-    // TODO: Update db
-  })
-  .delete("/:id", async (c) => {
-    // TODO: Update db
   });
 
 export default usersApi;

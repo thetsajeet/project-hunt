@@ -1,0 +1,15 @@
+meta {
+  name: Sign Out
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{root}}/api/auth/signout
+  body: none
+  auth: inherit
+}
+
+headers {
+  Cookie: better-auth.session_token=uDdslulhOfaipAe5I62jy56BYD7JgWcF.tQE7vbP%2F0aQ0cAWFIf75RKdEAtf%2FYjbsrDDQwigmXUA%3D
+}
