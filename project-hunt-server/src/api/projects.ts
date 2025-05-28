@@ -3,8 +3,15 @@ import { db } from "../db";
 import { project, projectMembers, user } from "../db/schema";
 import { eq } from "drizzle-orm";
 import { HTTPException } from "hono/http-exception";
+import { pgTable } from "drizzle-orm/pg-core";
+import { auth } from "../lib/auth";
 
-const projectsApi = new Hono();
+type Variables = {
+  user: typeof auth.$Infer.Session.user | null;
+  session: typeof auth.$Infer.Session.session | null;
+};
+
+const projectsApi = new Hono<{ Variables: Variables }>();
 
 projectsApi
   .get("/", async (c) => {
@@ -111,6 +118,39 @@ projectsApi
         project: formattedProjects.length != 0 ? formattedProjects[0] : {},
       },
     });
+  })
+  .post("/", async (c) => {
+    const { title, description } = await c.req.json();
+
+    const session = c.get("session");
+    if (!session) throw new HTTPException(400, { message: "invalid session" });
+
+    const user = c.get("user");
+
+    const result = await db
+      .insert(project)
+      .values({ id: crypto.randomUUID(), title, description })
+      .returning();
+
+    if (result.length == 0)
+      throw new HTTPException(500, { message: "unable to create a project" });
+
+    const addUserResult = await db
+      .insert(projectMembers)
+      .values({ user_id: user!.id, project_id: result[0].id, role: "owner" })
+      .returning();
+
+    if (addUserResult.length == 0)
+      throw new HTTPException(500, {
+        message: "unable to add user to project",
+      });
+
+    return c.json(
+      {
+        message: "ok",
+      },
+      201,
+    );
   });
 
 export default projectsApi;

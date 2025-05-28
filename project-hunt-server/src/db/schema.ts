@@ -6,6 +6,7 @@ import {
   timestamp,
   boolean,
   primaryKey,
+  uuid,
 } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
@@ -72,8 +73,8 @@ export const project = pgTable("project", {
   id: text("id").primaryKey(),
   title: text("title").notNull(),
   description: text("description"),
-  createdAt: timestamp("created_at").notNull(),
-  updatedAt: timestamp("updated_at").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
 
 export const projectMembers = pgTable("project_members", {
@@ -84,5 +85,4 @@ export const projectMembers = pgTable("project_members", {
     .notNull()
     .references(() => project.id, { onDelete: "cascade" }),
   role: text("role").default("member"),
-  joinedAt: timestamp("joined_at").defaultNow(),
 });

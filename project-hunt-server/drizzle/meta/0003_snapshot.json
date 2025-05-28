@@ -1,5 +1,5 @@
 {
-  "id": "6bf98070-e51f-4fef-811b-867861b87fdf",
+  "id": "a6646111-3e4d-4c57-81f4-451d7aa8b842",
   "prevId": "6fa74c45-36e9-4503-8360-a0cae83ffaa0",
   "version": "7",
   "dialect": "postgresql",
@@ -135,13 +135,15 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -158,13 +160,13 @@
       "columns": {
         "user_id": {
           "name": "user_id",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
         "project_id": {
           "name": "project_id",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
@@ -174,13 +176,6 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'member'"
-        },
-        "joined_at": {
-          "name": "joined_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
         }
       },
       "indexes": {},
