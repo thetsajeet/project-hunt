@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Project Hunt",
@@ -13,7 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased`}>
+        <div className="max-w-7xl mx-auto">{children}</div>
+      </body>
     </html>
   );
 }
