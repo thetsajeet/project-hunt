@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSectionOne() {
   return (
@@ -109,7 +110,7 @@ const Navbar = () => {
         <h1 className="text-base font-bold md:text-2xl">Project Hunt</h1>
       </div>
       <button className="w-36 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 md:w-36 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-        Get started
+        <Link href="/sign-in">Get started</Link>
       </button>
     </nav>
   );
