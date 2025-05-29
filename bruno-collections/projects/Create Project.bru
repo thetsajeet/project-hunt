@@ -1,0 +1,22 @@
+meta {
+  name: Create Project
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{root}}/api/projects
+  body: json
+  auth: inherit
+}
+
+headers {
+  Cookie: better-auth.session_token=STka9PV11Vqza5LyxDqPIeON52xOUFNY.OZIZTKCEXJcSRzaZFUg8MKuHYl50gBq1%2FOKZDPV7f6w%3D
+}
+
+body:json {
+  {
+    "title": "Project Hunt",
+    "description": "Very good products"
+  }
+}
