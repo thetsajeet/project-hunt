@@ -11,11 +11,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={`antialiased`}>
-        <div className="max-w-7xl mx-auto">{children}</div>
-      </body>
-    </html>
-  );
+  return <div className="max-w-7xl mx-auto">{children}</div>;
 }
