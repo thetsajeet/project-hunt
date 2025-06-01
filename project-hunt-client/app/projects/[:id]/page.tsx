@@ -15,6 +15,18 @@ import { Star } from "lucide-react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { notFound } from "next/navigation";
 
+type ProjectType = {
+  id: string;
+  title: string;
+  shortDescription: string;
+  longDescription?: string;
+  imageUrls?: string[];
+  logoUrl?: string;
+  rating: number;
+  categories?: string[];
+  techStack?: string[];
+};
+
 export default function ProjectsPage() {
   const categories = ["entertainment", "fintech"];
   const reviews = [
@@ -37,8 +49,8 @@ export default function ProjectsPage() {
 
   const { data, status, error } = useQuery({
     queryKey: ["projects"],
-    queryFn: async () => {
-      const response = await fetch("http://localhost:3000/posts/1");
+    async queryFn(): Promise<ProjectType> {
+      const response = await fetch("http://localhost:3000/projects/1");
       if (!response.ok)
         throw new Error("something went wrong: " + response.statusText);
       return response.json();
@@ -57,8 +69,8 @@ export default function ProjectsPage() {
         <div className="mr-2">
           <div className="size-16 rounded-md relative">
             <Image
-              src="/project-cover.avif"
-              alt="project-cover"
+              src={data.logoUrl || ""}
+              alt="project logo"
               fill
               className="absolute object-cover"
             />
@@ -66,26 +78,24 @@ export default function ProjectsPage() {
         </div>
         <div className="flex-1 flex flex-col">
           <div className="text-2xl mb-1">Tyce</div>
-          <div className="text-sm mb-1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quos!
-          </div>
+          <div className="text-sm mb-1">{data.shortDescription}</div>
           <div className="flex mb-1">
-            {Array.from({ length: Math.floor(rating) }).map((_, index) => (
+            {Array.from({ length: Math.floor(data.rating) }).map((_, index) => (
               <span key={index}>
                 <Star className="yellow fill-yellow-300 stroke-yellow-400" />
               </span>
             ))}
             <div className="flex mb-1">
-              {Array.from({ length: totalRating - Math.floor(rating) }).map(
-                (_, index) => (
-                  <span key={index}>
-                    <Star />
-                  </span>
-                ),
-              )}
+              {Array.from({
+                length: totalRating - Math.floor(data.rating),
+              }).map((_, index) => (
+                <span key={index}>
+                  <Star />
+                </span>
+              ))}
             </div>
             <span className="flex ml-1 items-center text-sm">
-              {rating} / {totalRating}
+              {data.rating} / {totalRating}
             </span>
           </div>
         </div>
@@ -93,25 +103,34 @@ export default function ProjectsPage() {
           <span className="relative"></span>
         </div>
       </div>
-      <div className="w-full mb-7">{longDescription}</div>
+      <div className="w-full mb-7">{data.longDescription}</div>
       <div className="w-full mb-7 flex items-center">
-        <span className="mr-2 font-bold">Categories</span>
-        {categories.map((category) => (
-          <Badge className="mr-1 rounded-sm" key={category}>
-            {category}
-          </Badge>
-        ))}
+        {data.categories && data.categories.length > 0 && (
+          <>
+            <span className="mr-2 font-bold">Categories</span>
+            {data.categories.map((category) => (
+              <Badge className="mr-1 rounded-sm" key={category}>
+                {category}
+              </Badge>
+            ))}
+          </>
+        )}
       </div>
       <div className="flex mb-7 px-10">
-        <ImageSlider />
+        <ImageSlider imageUrls={data.imageUrls} />
       </div>
       <div className="w-full mb-7 flex items-center">
         <span className="mr-2 font-bold">Tech Stack</span>
-        {techStack.map((stack) => (
-          <Badge className="mr-1 rounded-sm" key={stack}>
-            {stack}
-          </Badge>
-        ))}
+        {data.techStack && data.techStack.length > 0 && (
+          <>
+            <span className="mr-2 font-bold">Technologies</span>
+            {data.techStack.map((tech) => (
+              <Badge className="mr-1 rounded-sm" key={tech}>
+                {tech}
+              </Badge>
+            ))}
+          </>
+        )}
       </div>
       <div className="flex flex-col mb-7">
         <div className="w-full mb-7">
@@ -129,7 +148,7 @@ export default function ProjectsPage() {
   );
 }
 
-const ImageSlider = () => {
+const ImageSlider = ({ imageUrls }: { imageUrls: string[] }) => {
   return (
     <Carousel
       opts={{
@@ -139,7 +158,7 @@ const ImageSlider = () => {
       className="flex-1 mx-auto"
     >
       <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
+        {imageUrls.map((imageUrl, index) => (
           <CarouselItem
             key={index}
             className="basis-1/1 md:basis-1/3 lg:basis-1/4"
@@ -148,8 +167,8 @@ const ImageSlider = () => {
               <Card className="border-none">
                 <CardContent className="relative flex aspect-square items-center justify-center p-6">
                   <Image
-                    alt="project sliders"
-                    src={`/project-slider-${index + 1}.avif`}
+                    alt={`image-slider-${index + 1}`}
+                    src={imageUrl}
                     fill
                     className="absolute object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
