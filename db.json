@@ -6,10 +6,13 @@
             "shortDescription": "AI-powered resume builder tailored to job descriptions.",
             "longDescription": "Rege.ai helps job seekers create ATS-optimized resumes using their personal highlights and AI models that tailor content based on job descriptions.",
             "imageUrls": [
-                "https://example.com/images/regeai-1.png",
-                "https://example.com/images/regeai-2.png"
+                "/project-slider-1.avif",
+                "/project-slider-2.avif",
+                "/project-slider-3.avif",
+                "/project-slider-4.avif",
+                "/project-slider-5.avif"
             ],
-            "logoUrl": "https://example.com/logos/regeai.png",
+            "logoUrl": "/project-cover.avif",
             "rating": 3.6,
             "categories": [
                 "Career",
@@ -29,9 +32,13 @@
             "shortDescription": "Feedback and task prioritization tool for product teams.",
             "longDescription": "LoopBoard helps teams collect feedback, organize tasks, and close the product feedback loop efficiently through a collaborative board.",
             "imageUrls": [
-                "https://example.com/images/loopboard.png"
+                "/project-slider-1.avif",
+                "/project-slider-2.avif",
+                "/project-slider-3.avif",
+                "/project-slider-4.avif",
+                "/project-slider-5.avif"
             ],
-            "logoUrl": "https://example.com/logos/loopboard.svg",
+            "logoUrl": "/project-cover.avif",
             "rating": 4.7,
             "categories": [
                 "Productivity",
@@ -49,9 +56,13 @@
             "shortDescription": "Gamified onboarding platform for new hires.",
             "longDescription": "Onboardr simplifies HR onboarding with a fun, structured experience including peer networking, content tracking, and automated scheduling.",
             "imageUrls": [
-                "https://example.com/images/onboardr-flow.png"
+                "/project-slider-1.avif",
+                "/project-slider-2.avif",
+                "/project-slider-3.avif",
+                "/project-slider-4.avif",
+                "/project-slider-5.avif"
             ],
-            "logoUrl": "https://example.com/logos/onboardr.png",
+            "logoUrl": "/project-cover.avif",
             "rating": 4.6,
             "categories": [
                 "HR",
@@ -70,9 +81,13 @@
             "shortDescription": "Conversational AI for restaurant reservations.",
             "longDescription": "FoodieSpot enables users to book tables at their favorite restaurants via a voice-enabled assistant or web chatbot.",
             "imageUrls": [
-                "https://example.com/images/foodiespot-1.jpg"
+                "/project-slider-1.avif",
+                "/project-slider-2.avif",
+                "/project-slider-3.avif",
+                "/project-slider-4.avif",
+                "/project-slider-5.avif"
             ],
-            "logoUrl": "https://example.com/logos/foodiespot.png",
+            "logoUrl": "/project-cover.avif",
             "rating": 4.5,
             "categories": [
                 "AI",
@@ -90,9 +105,13 @@
             "shortDescription": "Smart personal budget tracker with reports and goals.",
             "longDescription": "TrackWise helps users manage expenses, set savings goals, and view intuitive financial reports on a daily, monthly, and yearly basis.",
             "imageUrls": [
-                "https://example.com/images/trackwise-dashboard.png"
+                "/project-slider-1.avif",
+                "/project-slider-2.avif",
+                "/project-slider-3.avif",
+                "/project-slider-4.avif",
+                "/project-slider-5.avif"
             ],
-            "logoUrl": "https://example.com/logos/trackwise.svg",
+            "logoUrl": "/project-cover.avif",
             "rating": 4.2,
             "categories": [
                 "Finance",
@@ -102,110 +121,6 @@
                 "React",
                 "Chart.js",
                 "SQLite"
-            ]
-        },
-        {
-            "id": "6",
-            "title": "IdeaHub",
-            "shortDescription": "Community-driven platform to share and upvote project ideas.",
-            "longDescription": "IdeaHub enables makers and hackers to discover, post, and collaborate on project ideas. Great for hackathons and indie hackers.",
-            "imageUrls": [
-                "https://example.com/images/ideahub-1.png"
-            ],
-            "logoUrl": "https://example.com/logos/ideahub.png",
-            "rating": 4.4,
-            "categories": [
-                "Community",
-                "Hackathons"
-            ],
-            "techStack": [
-                "Next.js",
-                "Prisma",
-                "PostgreSQL"
-            ]
-        },
-        {
-            "id": "7",
-            "title": "DailyMuse",
-            "shortDescription": "Daily creative writing prompts powered by AI.",
-            "longDescription": "DailyMuse delivers fresh, imaginative writing prompts and story starters every day, tailored to your favorite genres.",
-            "imageUrls": [
-                "https://example.com/images/dailymuse-1.png"
-            ],
-            "logoUrl": "https://example.com/logos/dailymuse.png",
-            "rating": 4.1,
-            "categories": [
-                "Creativity",
-                "AI",
-                "Education"
-            ],
-            "techStack": [
-                "Svelte",
-                "GPT-4",
-                "Supabase"
-            ]
-        },
-        {
-            "id": "8",
-            "title": "CodeQuest",
-            "shortDescription": "Gamified coding platform with quests and challenges.",
-            "longDescription": "CodeQuest lets you complete fun, narrative-driven programming challenges and earn badges as you level up your skills.",
-            "imageUrls": [
-                "https://example.com/images/codequest-1.png"
-            ],
-            "logoUrl": "https://example.com/logos/codequest.svg",
-            "rating": 4.9,
-            "categories": [
-                "Education",
-                "Coding",
-                "Gamification"
-            ],
-            "techStack": [
-                "React",
-                "TypeScript",
-                "GraphQL",
-                "Hasura"
-            ]
-        },
-        {
-            "id": "9",
-            "title": "PulseAnalytics",
-            "shortDescription": "Real-time analytics dashboard for startups.",
-            "longDescription": "PulseAnalytics provides live tracking of key business metrics with customizable dashboards and alerts.",
-            "imageUrls": [
-                "https://example.com/images/pulseanalytics-1.png"
-            ],
-            "logoUrl": "https://example.com/logos/pulseanalytics.svg",
-            "rating": 4.3,
-            "categories": [
-                "Analytics",
-                "SaaS"
-            ],
-            "techStack": [
-                "Vue",
-                "D3.js",
-                "Firebase"
-            ]
-        },
-        {
-            "id": "10",
-            "title": "QuickLegal",
-            "shortDescription": "Generate basic legal documents with AI.",
-            "longDescription": "QuickLegal helps freelancers and startups draft simple contracts, NDAs, and service agreements using natural language input.",
-            "imageUrls": [
-                "https://example.com/images/quicklegal-1.png"
-            ],
-            "logoUrl": "https://example.com/logos/quicklegal.png",
-            "rating": 4.6,
-            "categories": [
-                "Legal",
-                "AI",
-                "Productivity"
-            ],
-            "techStack": [
-                "Next.js",
-                "OpenAI",
-                "MongoDB"
             ]
         }
     ],
