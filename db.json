@@ -24,6 +24,16 @@
                 "Tailwind CSS",
                 "OpenAI",
                 "MongoDB"
+            ],
+            "members": [
+                {
+                    "username": "ajeet",
+                    "userLink": "https://github.com/thetsajeet"
+                },
+                {
+                    "username": "alice_dev",
+                    "userLink": "https://github.com/thetsajeet"
+                }
             ]
         },
         {
@@ -48,6 +58,16 @@
                 "React",
                 "Node.js",
                 "PostgreSQL"
+            ],
+            "members": [
+                {
+                    "username": "ajeet",
+                    "userLink": "https://github.com/thetsajeet"
+                },
+                {
+                    "username": "alice_dev",
+                    "userLink": "https://github.com/thetsajeet"
+                }
             ]
         },
         {
@@ -73,6 +93,16 @@
                 "Vue",
                 "Firebase",
                 "Node.js"
+            ],
+            "members": [
+                {
+                    "username": "ajeet",
+                    "userLink": "https://github.com/thetsajeet"
+                },
+                {
+                    "username": "alice_dev",
+                    "userLink": "https://github.com/thetsajeet"
+                }
             ]
         },
         {
@@ -97,6 +127,16 @@
                 "Next.js",
                 "OpenAI",
                 "Supabase"
+            ],
+            "members": [
+                {
+                    "username": "ajeet",
+                    "userLink": "https://github.com/thetsajeet"
+                },
+                {
+                    "username": "alice_dev",
+                    "userLink": "https://github.com/thetsajeet"
+                }
             ]
         },
         {
@@ -121,19 +161,17 @@
                 "React",
                 "Chart.js",
                 "SQLite"
+            ],
+            "members": [
+                {
+                    "username": "ajeet",
+                    "userLink": "https://github.com/thetsajeet"
+                },
+                {
+                    "username": "alice_dev",
+                    "userLink": "https://github.com/thetsajeet"
+                }
             ]
-        }
-    ],
-    "comments": [
-        {
-            "id": "1",
-            "text": "a comment about post 1",
-            "postId": "1"
-        },
-        {
-            "id": "2",
-            "text": "another comment about post 1",
-            "postId": "1"
         }
     ],
     "users": [

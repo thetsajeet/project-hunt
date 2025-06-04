@@ -63,7 +63,9 @@ export default function Pages() {
                 </div>
                 <hr />
                 <div className="mx-4 mt-4">
-                    <div className="text-xl mb-4">Projects</div>
+                    <div className="text-2xl font-semibold mb-4 underline underline-offset-2">
+                        Projects
+                    </div>
                     <div className="grid lg:grid-cols-3 gap-x-1 gap-y-3">
                         {data.projects.map((proj: UserProject) => (
                             <ProjectCard key={proj.project_id} proj={proj} />

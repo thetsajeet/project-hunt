@@ -11,9 +11,21 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Star } from "lucide-react";
+import { ExternalLink, Star } from "lucide-react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { notFound, useParams } from "next/navigation";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import Link from "next/link";
+
+type Member = {
+  username: string;
+  userLink: string;
+};
 
 type ProjectType = {
   id: string;
@@ -25,6 +37,7 @@ type ProjectType = {
   rating: number;
   categories?: string[];
   techStack?: string[];
+  members: Member[];
 };
 
 export default function ProjectsPage() {
@@ -65,82 +78,123 @@ export default function ProjectsPage() {
   if (status === "pending") return <div>loading...</div>;
 
   return (
-    <div className="mx-4 flex flex-col">
-      <div className="flex flex-row mt-5 mb-7">
-        <div className="mr-2">
-          <div className="size-16 rounded-md relative">
-            <Image
-              src={data.logoUrl || ""}
-              alt="project logo"
-              fill
-              className="absolute object-cover"
-            />
-          </div>
-        </div>
-        <div className="flex-1 flex flex-col">
-          <div className="text-2xl mb-1">{data.title}</div>
-          <div className="text-sm mb-1">{data.shortDescription}</div>
-          <div className="flex mb-1">
-            {Array.from({ length: Math.floor(data.rating) }).map((_, index) => (
-              <span key={index}>
-                <Star className="yellow fill-yellow-300 stroke-yellow-400" />
-              </span>
-            ))}
-            <div className="flex mb-1">
-              {Array.from({
-                length: totalRating - Math.floor(data.rating),
-              }).map((_, index) => (
-                <span key={index}>
-                  <Star />
-                </span>
-              ))}
+    <div className="border">
+      <div className="mx-4 flex flex-col">
+        <div className="flex flex-row mt-5 mb-2">
+          <div className="mr-2">
+            <div className="size-16 rounded-md relative">
+              <Image
+                src={data.logoUrl || ""}
+                alt="project logo"
+                fill
+                className="absolute object-cover"
+              />
             </div>
-            <span className="flex ml-1 items-center text-sm">
-              {data.rating} / {totalRating}
-            </span>
+          </div>
+          <div className="flex-1 flex flex-col">
+            <div className="text-2xl mb-1">{data.title}</div>
+            <div className="text-sm mb-1">{data.shortDescription}</div>
+            <div className="flex mb-1">
+              {Array.from({ length: Math.floor(data.rating) }).map(
+                (_, index) => (
+                  <span key={index}>
+                    <Star className="yellow fill-yellow-300 stroke-yellow-400" />
+                  </span>
+                ),
+              )}
+              <div className="flex mb-1">
+                {Array.from({
+                  length: totalRating - Math.floor(data.rating),
+                }).map((_, index) => (
+                  <span key={index}>
+                    <Star />
+                  </span>
+                ))}
+              </div>
+              <span className="flex ml-1 items-center text-sm">
+                {data.rating} / {totalRating}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="w-full mb-4 flex flex-col">
-        <span className="text-lg underline underline-offset-2 font-semibold text-zinc-500 mb-1">
-          About
-        </span>
-        <span>{data.longDescription}</span>
-      </div>
-      <div className="w-full mb-7 flex flex-col justify-center">
-        <span className="text-lg mr-2 underline underline-offset-2 font-semibold text-zinc-500 mb-1">
-          Categories
-        </span>
-        {data.categories && data.categories.length > 0 && (
-          <span className="flex flex-row">
-            {data.categories.map((category) => (
-              <Badge className="mr-1 rounded-sm" key={category}>
-                {category}
-              </Badge>
-            ))}
+        <hr className="mb-4" />
+        <div className="w-full mb-4 flex flex-col">
+          <span className="text-lg underline underline-offset-2 font-semibold text-zinc-500 mb-1">
+            About
           </span>
-        )}
-      </div>
-      {data.imageUrls && (
-        <div className="flex mb-7 px-10">
-          <ImageSlider imageUrls={data.imageUrls} />
+          <span>{data.longDescription}</span>
         </div>
-      )}
-      <div className="w-full mb-7 flex flex-col justify-center">
-        <span className="text-lg mr-2 underline underline-offset-2 font-semibold text-zinc-500 mb-1">
-          Technologies
-        </span>
-        {data.techStack && data.techStack.length > 0 && (
-          <span className="flex flex-row">
-            {data.techStack.map((tech) => (
-              <Badge className="mr-1 rounded-sm" key={tech}>
-                {tech}
-              </Badge>
-            ))}
+        <div className="w-full mb-7 flex flex-col justify-center">
+          <span className="text-lg mr-2 underline underline-offset-2 font-semibold text-zinc-500 mb-1">
+            Categories
           </span>
+          {data.categories && data.categories.length > 0 && (
+            <span className="flex flex-row">
+              {data.categories.map((category) => (
+                <Badge className="mr-1 rounded-sm" key={category}>
+                  {category}
+                </Badge>
+              ))}
+            </span>
+          )}
+        </div>
+        {data.imageUrls && (
+          <div className="flex mb-7 px-10">
+            <ImageSlider imageUrls={data.imageUrls} />
+          </div>
         )}
-      </div>
-      {/*<div className="flex flex-col mb-7">
+        <div className="w-full mb-7 flex flex-col justify-center">
+          <span className="text-lg mr-2 underline underline-offset-2 font-semibold text-zinc-500 mb-1">
+            Technologies
+          </span>
+          {data.techStack && data.techStack.length > 0 && (
+            <span className="flex flex-row">
+              {data.techStack.map((tech) => (
+                <Badge className="mr-1 rounded-sm" key={tech}>
+                  {tech}
+                </Badge>
+              ))}
+            </span>
+          )}
+        </div>
+        <div className="w-full mb-7 flex flex-col justify-center">
+          <span className="text-lg mr-2 underline underline-offset-2 font-semibold text-zinc-500 mb-1">
+            Team
+          </span>
+          {
+            <span className="flex flex-row gap-1">
+              {data.members.map((member: Member) => (
+                <div key={member.username}>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Avatar>
+                        <AvatarImage src="https://github.com/shadcn.png" />
+                        <AvatarFallback>
+                          {member.username.at(0)?.toUpperCase()}
+                        </AvatarFallback>
+                      </Avatar>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <div className="flex justify-between items-center">
+                        <span className="mr-2">{member.username}</span>
+                        <Link
+                          className="cursor-pointer"
+                          href={member.userLink}
+                          target="_blank"
+                        >
+                          <span>
+                            <ExternalLink className="size-3" />
+                          </span>
+                        </Link>
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
+              ))}
+            </span>
+          }
+        </div>
+        {/*<div className="flex flex-col mb-7">
         <span className="text-lg mr-2 underline underline-offset-2 font-semibold text-zinc-500 mb-1">
           Reviews
         </span>
@@ -155,6 +209,7 @@ export default function ProjectsPage() {
           ))}
         </div>
       </div>*/}
+      </div>
     </div>
   );
 }
