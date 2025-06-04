@@ -136,7 +136,87 @@
             "postId": "1"
         }
     ],
-    "profile": {
-        "name": "typicode"
-    }
+    "users": [
+        {
+            "id": "1",
+            "firstName": "Alice",
+            "lastName": "Johnson",
+            "username": "alice_dev",
+            "email": "alice@example.com",
+            "phone": "+1234567890",
+            "bioHeader": "SDE 2 @ Google | NIT Trichy",
+            "projects": [
+                {
+                    "project_id": "1",
+                    "title": "Rege.ai",
+                    "logoUrl": "/project-cover.avif",
+                    "shortDescription": "Gamified onboarding platform for new hires."
+                },
+                {
+                    "project_id": "2",
+                    "title": "LoopBoard",
+                    "logoUrl": "/project-cover.avif",
+                    "shortDescription": "Conversational AI for restaurant reservations."
+                },
+                {
+                    "project_id": "3",
+                    "title": "Onboardr",
+                    "logoUrl": "/project-cover.avif",
+                    "shortDescription": "Smart personal budget tracker with reports and goals."
+                },
+                {
+                    "project_id": "4",
+                    "title": "FoodieSpot",
+                    "logoUrl": "/project-cover.avif",
+                    "shortDescription": "AI-powered resume builder tailored to job descriptions."
+                }
+            ],
+            "backgroundCover": "https://example.com/users/alice.jpg",
+            "displayPicture": "https://avatar.iran.liara.run/public",
+            "links": [
+                "https://github.com/alice-dev",
+                "https://linkedin.com/in/alicejohnson"
+            ]
+        },
+        {
+            "id": "2",
+            "firstName": "Brian",
+            "lastName": "Lee",
+            "username": "brian_codes",
+            "email": "brian@example.com",
+            "bioHeader": "SDE 2 @ Google | NIT Trichy",
+            "projects": [
+                {
+                    "project_id": "2",
+                    "title": "LoopBoard",
+                    "logoUrl": "/project-cover.avif",
+                    "shortDescription": "Feedback and task prioritization tool for product teams."
+                },
+                {
+                    "project_id": "3",
+                    "title": "Onboardr",
+                    "logoUrl": "/project-cover.avif",
+                    "shortDescription": "AI-powered resume builder tailored to job descriptions."
+                },
+                {
+                    "project_id": "4",
+                    "title": "FoodieSpot",
+                    "logoUrl": "/project-cover.avif",
+                    "shortDescription": "Feedback and task prioritization tool for product teams."
+                },
+                {
+                    "project_id": "5",
+                    "title": "TrackWise",
+                    "logoUrl": "/project-cover.avif",
+                    "shortDescription": "Conversational AI for restaurant reservations."
+                }
+            ],
+            "backgroundCover": "https://avatar.iran.liara.run/public",
+            "displayPicture": "https://avatar.iran.liara.run/public",
+            "links": [
+                "https://github.com/brianlee",
+                "https://twitter.com/briancodes"
+            ]
+        }
+    ]
 }

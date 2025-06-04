@@ -19,7 +19,7 @@ export default function AddProjectCard() {
   const logo = "/project-cover.avif";
 
   return (
-    <Card className="hover:scale-105 group hover:bg-zinc-800 cursor-pointer transition-all duration-200 w-full max-w-sm flex-col">
+    <Card className="hover:scale-105 group hover:bg-zinc-600 cursor-pointer transition-all duration-200 w-full max-w-sm flex-col">
       <CardContent className="flex-1">
         <span className="flex flex-col flex-1 h-full w-full justify-center items-center">
           <LucidePlusCircle className="text-yellow-400 animate-pulse size-6" />
